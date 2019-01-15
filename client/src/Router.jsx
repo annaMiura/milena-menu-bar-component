@@ -34,7 +34,7 @@ const AppRouter = (props) => {
               <Link to="/Followers" style={styles.link}>Followers  {userInfo.users[userInfo.selectedUser].followers}</Link>
             </li>
             <li style={styles.navItem}>
-              <Link to="/Following" style={styles.link}>Following  {userInfo.users[userInfo.selectedUser].following} </Link>
+              <Link to="/Following" style={styles.link} userInfo={props.userInfo.users}>Following  {userInfo.users[userInfo.selectedUser].following} </Link>
             </li>
           </ul>
           <button style={styles.navRight} >Subscribe</button>
@@ -45,7 +45,7 @@ const AppRouter = (props) => {
         <Route path="/Clips" component={Clips} />
         <Route path="/Events" component={Events} />
         <Route path="/Followers" component={Followers} />
-        <Route path="/Following" component={Following} />
+        <Route path="/Following" render={(routeProps) => <Following {...routeProps} userArray={props.userInfo.users}/>} />
 
       </div>
     </Router>

@@ -17,6 +17,7 @@ class App extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.displayStreamerVideos = this.displayStreamerVideos.bind(this);
+    this.showFollowingUsers = this.showFollowingUsers.bind(this);
   }
 
   handleClick (e) {
@@ -40,10 +41,12 @@ class App extends React.Component {
   }
 
   displayStreamerVideos(e, index) {
-    //when username on sidebar is clicked
-    //that specific user's information shows up underneath the route
     console.log('index', index, "e", e)
     this.setState({ selectedUser: index })
+  }
+
+  showFollowingUsers() {
+
   }
 
   componentDidMount() {
@@ -64,7 +67,7 @@ class App extends React.Component {
 
   render() {
     const sidebar = this.state.users.length ? <SideBar userInfo={this.state} onSelect={this.displayStreamerVideos}/> : null;
-    const appRouter = this.state.users.length ? <AppRouter userInfo={this.state} onClick={(e) => this.handleClick(e)}/> : null;
+    const appRouter = this.state.users.length ? <AppRouter userInfo={this.state} showFollowing={this.showFollowingUsers} onClick={(e) => this.handleClick(e)}/> : null;
     return (
 
       <div>
@@ -75,5 +78,9 @@ class App extends React.Component {
   }
 }
 
+/*
+following = users from the database in reverse order
+square (background = profile_image_url), display_name underneath logo (centered)
+*/
 
 ReactDOM.render(<App />, document.getElementById('app'));
