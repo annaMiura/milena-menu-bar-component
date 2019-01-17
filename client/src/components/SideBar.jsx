@@ -72,12 +72,15 @@ styles.category = {
 
 styles.background = {
   position: "absolute",
-  top: "0px",
-  left: "5px",
+  /* top: 0px, */
+  /* left: 5px, */
   background: "#181818",
-  width: "250px",
-  height: "700px",
-  float: 'right'
+  borderBottom: '6px solid #181818',
+  width: "230px",
+  height: "94vh",
+  float: "right",
+  margin: "50px 0 0 0",
+
 }
 
 

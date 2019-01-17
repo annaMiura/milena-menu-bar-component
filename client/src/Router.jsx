@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Videos from './components/Videos.jsx';
 import Clips from './components/Clips.jsx';
 import Events from './components/Events.jsx';
@@ -12,7 +12,7 @@ const AppRouter = (props) => {
   const userInfo = props.userInfo;
   return (
     <Router>
-      <div>
+      <div style={styles.header}>
         <nav>
           <ul style={styles.nav}>
             <li style={styles.navItem}>
@@ -56,6 +56,20 @@ const styles = {};
 
 styles.link = {
   textDecoration: "none"
+}
+
+styles.header = {
+  position: "fixed",
+  width: "100%",
+  "background-color": "rgb(100, 65, 165)",
+  color: "#fff",
+  "z-index": 1000000,
+  height: "50px",
+  padding: 0,
+  margin: 0,
+  display: "flex",
+  "justify-content": "flex-end",
+  "align-items": "center",
 }
 
 styles.nav = {
