@@ -6,20 +6,21 @@ import Events from './components/Events.jsx';
 import Following from './components/Following.jsx';
 import Followers from './components/Followers.jsx';
 
-
 const AppRouter = (props) => {
   console.log('props=======>' ,props)
   const userInfo = props.userInfo;
+  const followingNumbers = <span style={styles.numbers}>{userInfo.users[userInfo.selectedUser].following.toLocaleString()}</span>;
+  const followersNumbers = <span style={styles.numbers}>{userInfo.users[userInfo.selectedUser].followers.toLocaleString()}</span>;
   return (
     <Router>
       <div style={styles.header}>
         <nav>
           <ul style={styles.nav}>
-            <li style={styles.navItem}>
+          <li style={styles.navItem}>
               <img style={styles.logo} src={userInfo.users[userInfo.selectedUser].logo} />
             </li>
             <li style={styles.navItem}>
-              <Link to="/" style={styles.link}>{userInfo.users[userInfo.selectedUser].display_name}</Link>
+              <Link to="/" style={styles.linkUsername}>{userInfo.users[userInfo.selectedUser].display_name}</Link>
             </li>
             <li style={styles.navItem}>
               <Link to="/Videos" style={styles.link}>Videos  {userInfo.users[userInfo.selectedUser].Videos}</Link>
@@ -31,21 +32,21 @@ const AppRouter = (props) => {
               <Link to="/Events" style={styles.link}>Events</Link>
             </li>
             <li style={styles.navItem}>
-              <Link to="/Followers" style={styles.link}>Followers  {userInfo.users[userInfo.selectedUser].followers}</Link>
+              <Link to="/Followers" style={styles.link}>Followers {followersNumbers} </Link>
             </li>
             <li style={styles.navItem}>
-              <Link to="/Following" style={styles.link} userInfo={props.userInfo.users}>Following  {userInfo.users[userInfo.selectedUser].following} </Link>
+              <Link to="/Following" style={styles.link} userInfo={props.userInfo.users}>Following  {followingNumbers} </Link>
             </li>
           </ul>
           <button style={styles.navRight} >Subscribe</button>
           <button style={styles.navRight} onClick={(e) => props.onClick(e)}>Follow</button>
         </nav>
 
-        <Route path="/Videos" component={Videos} />
-        <Route path="/Clips" component={Clips} />
-        <Route path="/Events" component={Events} />
-        <Route path="/Followers" component={Followers} />
-        <Route path="/Following" render={(routeProps) => <Following {...routeProps} userArray={props.userInfo.users}/>} />
+        {/* <Route path="/Videos" component={Videos} /> */}
+        <Route path="/clips" component={Videos} />
+        <Route path="/events" component={Events} />
+        <Route path="/followers" render={(routeProps) => <Followers {...routeProps} userArray={props.userInfo.users}/>} />
+        <Route path="/following" render={(routeProps) => <Following {...routeProps} userArray={props.userInfo.users}/>} />
 
       </div>
     </Router>
@@ -54,6 +55,10 @@ const AppRouter = (props) => {
 
 const styles = {};
 
+styles.numbers = {
+  color: "gray"
+}
+
 styles.link = {
   textDecoration: "none"
 }
@@ -61,7 +66,7 @@ styles.link = {
 styles.header = {
   position: "fixed",
   width: "100%",
-  "background-color": "rgb(100, 65, 165)",
+  // backgroundColor: "rgb(100, 65, 165)",
   color: "#fff",
   "z-index": 1000000,
   height: "50px",
@@ -87,7 +92,6 @@ styles.nav = {
 }
 
 styles.navItem = {
-  textAlign: "center",
   listStyleType: "none",
   padding: "10px",
 }

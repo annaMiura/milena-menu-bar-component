@@ -1,30 +1,42 @@
 import React from 'react';
 
-
 export const Follower = (props) => {
-  console.log('🙏', props);
+  let image = props.userData.profile_image_url;
   return (
-   <div>
-      <div> <img src={props.userData.logo}/></div>
-      <div> <h5>{props.userData.display_name}</h5></div>
-    </div>
+     <div style={{backgroundImage: "url(" + image + ")" , backgroundColor: "#181818", borderRadius: "5px", width: "295px", height: "165px", overlayColor: "white"}}>
+      <div><img src={props.userData.logo} style={styles.image}/></div>
+      <div style={styles.username}>{props.userData.display_name}</div>
+      </div>
   );
 }
 
 
 const styles = {};
 
-styles.follower = {
-  width: "500px",
-  height: "250px",
-  color: "red",
-  borderRadius: "5px",
-  border: "1px"
+styles.username = {
+  fontSize: "12px",
+  fontFamily: "Helvetica Neue",
+  color: "#F8F8F8",
+  fontWeight: "400",
+  paddingLeft: "center",
+  paddingTop: "8px",
+  textAlign: "center"
 }
 
 styles.image = {
-    width: "25%",
-    borderRadius: "4px"
+  borderRadius: "7px",
+  width: "20%",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto",
+  paddingTop: "35px"
+}
+
+styles.background = {
+  backgroundColor: "#181818",
+  borderRadius: "5px",
+  width: "295px",
+  height: "165px",
 }
 
 

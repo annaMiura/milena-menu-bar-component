@@ -1,37 +1,42 @@
 import React from 'react';
 import { Follower } from './Follower.jsx'
 
-// class Following extends React.Component {
-//   render() {
 
-//     return (
-//       <div style={styles.position}>
+class Following extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    var parent = document.getElementById('middle');
+    var following = document.getElementById('following');
+    parent.appendChild(following);
+  }
 
-//       <h2>   .</h2>
+  render() {
 
-//       This is the Following </div>
-//     )
-//   }
-// }
-
-const Following = (props) => {
-  console.log('💬', props.userArray)
-  // const mapThroughUsers =
   return (
-    <div>
-      {props.userArray.map((user, index) => {
-    return <Follower userData={user} key={index} />;
-  })}
+    <div id="following" style={styles.position}>
+        {this.props.userArray.map((user, index) => {
+          return <div style={styles.follower} key={index}> <Follower userData={user}/></div>;
+        })}
     </div>
   )
+  }
 }
 
 const styles = {};
 
 styles.position = {
-  position: "absolute",
-  top: "25px",
-  left: "260px"
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center'
+}
+
+styles.follower = {
+  float: "left",
+  margin: "10px"
 }
 
 
