@@ -65,14 +65,13 @@ styles.link = {
 
 styles.header = {
   position: "fixed",
-  width: "100%",
+  width: "76%",
   // backgroundColor: "rgb(100, 65, 165)",
   color: "#fff",
-  "z-index": 1000000,
   height: "50px",
   padding: 0,
   margin: 0,
-  display: "flex",
+  display: "inline-flex",
   "justify-content": "flex-end",
   "align-items": "center",
 }
