@@ -7,7 +7,6 @@ import Following from './components/Following.jsx';
 import Followers from './components/Followers.jsx';
 
 const AppRouter = (props) => {
-  console.log('props=======>' ,props)
   const userInfo = props.userInfo;
   const followingNumbers = <span style={styles.numbers}>{userInfo.users[userInfo.selectedUser].following.toLocaleString()}</span>;
   const followersNumbers = <span style={styles.numbers}>{userInfo.users[userInfo.selectedUser].followers.toLocaleString()}</span>;

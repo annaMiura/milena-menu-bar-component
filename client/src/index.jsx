@@ -37,7 +37,6 @@ class App extends React.Component {
   }
 
   displayStreamerVideos(e, index) {
-    console.log('🍄 index', index, "e", e)
     this.setState({ selectedUser: index })
   }
 
