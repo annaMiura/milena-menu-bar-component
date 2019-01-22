@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SideBar from './components/SideBar.jsx';
 import AppRouter from './Router.jsx';
-import { ifError } from 'assert';
+import fakeData from './../../database/fakeData';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends React.Component {
       followedUser: null,
       followedCategory: null,
       followedLogo: null,
-      users: [],
+      users: fakeData,
       selectedUser: 0
     }
 
@@ -42,18 +42,18 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    fetch('http://localhost:3000/username')
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            users: [...result]
-          })
-        },
-        (error) => {
-          console.log('error')
-        }
-      )
+    // fetch('http://localhost:3000/username')
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //       this.setState({
+    //         users: [...result]
+    //       })
+    //     },
+    //     (error) => {
+    //       console.log('error')
+    //     }
+    //   )
   }
 
   render() {
@@ -67,10 +67,5 @@ class App extends React.Component {
     )
   }
 }
-
-/*
-following = users from the database in reverse order
-square (background = profile_image_url), display_name underneath logo (centered)
-*/
 
 ReactDOM.render(<App />, document.getElementById('app'));
